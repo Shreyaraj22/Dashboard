@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 export default function Signup() {
   const [form, setForm] = useState({
@@ -10,18 +12,31 @@ export default function Signup() {
     confirmPassword: "",
   });
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   return (
-  <div className="min-h-screen flex justify-center items-center bg-gray-100 p-4">
-      {/* Outer wrapper div */}
+    <div className="min-h-screen flex justify-center items-center bg-gray-100 p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-semibold text-gray-900">
+
+       
+        <div className="flex justify-center mb-4">
+          <img
+            src={logo}
+            alt="Logo"
+            className="w-20 h-20 object-contain"
+          />
+        </div>
+
+  
+        <h2 className="text-2xl font-semibold text-gray-900 text-center">
           Create Your Account
         </h2>
-        <p className="text-sm text-gray-500 mt-1">
+
+        <p className="text-sm text-gray-500 mt-1 text-center">
           Join True-Viu and start your interview journey
         </p>
 
@@ -32,10 +47,10 @@ export default function Signup() {
             </label>
             <input
               type="text"
-              name="name"
-              placeholder="Enter your full name"
+              name=" name"
               value={form.name}
               onChange={handleChange}
+              placeholder="Enter your full name"
               className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
@@ -46,10 +61,10 @@ export default function Signup() {
             </label>
             <input
               type="email"
-              name="email"
-              placeholder="your.email@company.com"
+              name=" email"
               value={form.email}
               onChange={handleChange}
+              placeholder="your.email@company.com"
               className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
@@ -60,10 +75,10 @@ export default function Signup() {
             </label>
             <input
               type="text"
-              name="company"
-              placeholder="Your company name"
+              name=" company"
               value={form.company}
               onChange={handleChange}
+              placeholder="Your company name"
               className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
@@ -86,13 +101,15 @@ export default function Signup() {
           </div>
 
           <div>
-            <label className="text-sm font-medium text-gray-700">Password</label>
+            <label className="text-sm font-medium text-gray-700">
+              Password
+            </label>
             <input
               type="password"
-              name="password"
-              placeholder="Create a strong password"
+              name=" password"
               value={form.password}
               onChange={handleChange}
+              placeholder="Create a strong password"
               className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <p className="text-xs text-gray-500 mt-1">
@@ -106,10 +123,10 @@ export default function Signup() {
             </label>
             <input
               type="password"
-              name="confirmPassword"
-              placeholder="Confirm your password"
+              name="confirm Password"
               value={form.confirmPassword}
               onChange={handleChange}
+              placeholder="Confirm your password"
               className="w-full mt-1 px-3 py-2 bg-gray-100 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
           </div>
@@ -124,8 +141,11 @@ export default function Signup() {
 
         <p className="text-sm text-center text-gray-600 mt-4">
           Already have an account?{" "}
-          <span className="text-blue-600 font-medium cursor-pointer">
-            Sign in here
+          <span
+            onClick={() => navigate("/login")}
+            className="text-blue-600 cursor-pointer border-b border-blue-600 font-medium"
+          >
+            Sign in
           </span>
         </p>
 
@@ -137,6 +157,5 @@ export default function Signup() {
       </div>
     </div>
   );
+
 }
-
-
